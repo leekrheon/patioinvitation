@@ -130,10 +130,8 @@
     width: 44%;
     z-index: 5;
     cursor: pointer;
-    border: none;
-    background: transparent;
-    padding: 0;
     display: block;
+    text-decoration: none;
   }
   #quest-btn img {
     display: block;
@@ -155,9 +153,9 @@
   <img id="main-image" src="patioinvi.png" alt="patio">
 
   <!-- 커뮤니티 운영 문의 문구 위 빈 공간에 배치되는 문의 버튼 -->
-  <button id="quest-btn" type="button" aria-label="문의하기">
+  <a id="quest-btn" href="mailto:support@inmybackyard.kr" aria-label="문의하기">
     <img src="quest.svg" alt="문의하기">
-  </button>
+  </a>
 </div>
 
 <audio id="bg-audio" src="0906.MP3" preload="auto" playsinline loop></audio>
@@ -238,16 +236,14 @@
     }, 160);
   });
 
-  // 커뮤니티 운영 문의 버튼: 클릭 효과 후 메일 작성창 오픈 (사운드 토글과 분리)
+  // 커뮤니티 운영 문의 버튼: 클릭 효과만 추가 (실제 메일 이동은 a 태그의 mailto가 처리, 사운드 토글과 분리)
   var questBtn = document.getElementById('quest-btn');
-  var MAIL_TO = 'mailto:support@inmybackyard.kr';
   questBtn.addEventListener('click', function (e) {
     e.stopPropagation();
     questBtn.classList.add('tapped');
     setTimeout(function () {
       questBtn.classList.remove('tapped');
     }, 160);
-    window.location.href = MAIL_TO;
   });
 
   // 자동재생이 막힌 브라우저 대응: 스크롤만 해도 바로 오디오 재생 시도
